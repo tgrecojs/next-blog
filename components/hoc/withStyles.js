@@ -7,7 +7,7 @@ import { loadGetInitialProps } from 'next/dist/lib/utils';
 import Head from 'next/head';
 import { PRIMARY_COLOR } from '../../constants/theme';
 import AppBar from 'material-ui/AppBar';
-
+import Router from 'next/router';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -21,7 +21,7 @@ const Logged = (props) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
-    <MenuItem primaryText="Medium Page" />
+    <MenuItem primaryText="Medium Page" onItemTouchTap={() => Router} />
     <MenuItem primaryText="Contact Me" />
   </IconMenu>
 );
@@ -73,7 +73,7 @@ const withMaterialUI = ComposedComponent => {
       return (
         <div>
           <Head>
-            <title>Post Amplifier</title>
+            <title>Thomas Greco - Advanced JavaScript</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
           </Head>
@@ -82,9 +82,18 @@ const withMaterialUI = ComposedComponent => {
             html {
               background: #49768c;
             }
-            .banner {
+            .site {
+              display: flex;
+              min-height: 100vh;
+              flex-direction: column;
+            }
+            
+            .content {
+              flex: 1;
+            }
+            .banner{
               background: #fff;
-              font-family: 'system-ui', sans-serif;
+              font-family: 'Lato';
               display: flex; 
               flex-direction: column; 
               align-items: center;
@@ -92,6 +101,9 @@ const withMaterialUI = ComposedComponent => {
             .logo {
               max-width: 300px; 
               padding: 16px;
+            }
+            form {
+              width: 100%;
             }
         form, .flex-col {
               display: flex;
@@ -101,20 +113,21 @@ const withMaterialUI = ComposedComponent => {
         `}
           </style>
           <MuiThemeProvider muiTheme={muiTheme}>
-          <div>
-          <AppBar
-          title="Thomas Greco"
-          iconElementRight={<Logged/>}
-        />
-          <div className="banner">
-            <img className="logo" src="../../static/tg-logo.png" />
-            <h2>Web Dev Extroidinaire</h2>
-          </div>
-            <ComposedComponent
-              {...this.props}
-            />
+            <div className="site">
+              <AppBar
+                title="Thomas Greco"
+                iconElementRight={<Logged/>}
+              />
+              <div className="banner">
+                <img className="logo" src="../../static/tg-logo.png" />
+                <h2 style={{fontFamily: 'Lato'}}>Application Development and Design</h2>
+              </div>
+              <ComposedComponent className="content"
+                {...this.props}
+              />
             </div>
           </MuiThemeProvider>
+          <footer>I am at the bottom</footer>
         </div>
       );
     }

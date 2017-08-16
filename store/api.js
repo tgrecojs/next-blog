@@ -47,7 +47,16 @@ const initializeDB = ({
   }
 };
 
+const submitPost = ({name, email, companyName, additionalInfo} = {}) => {
+
+  db.ref('/entries' + email).set({
+    email, name, companyName, additionalInfo
+  });
+};
+
+
 export default {
   registerOnAuthStateChanged,
-  initializeDB
+  initializeDB,
+  submitPost
 };

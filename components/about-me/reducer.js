@@ -9,7 +9,7 @@ export const aboutMeInfo = [
   `,  links: ['https://medium.com', '/contact-me']
 }, {
   active: false,
-title: `The Year of the Mentor`,
+title: `Favor Composition over Inheritence`,
 text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
 }, { 
     active: false, 
