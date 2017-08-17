@@ -98,10 +98,30 @@ const withMaterialUI = ComposedComponent => {
               flex-direction: column; 
               align-items: center;
             }
+            .flex-col p {
+              width: 60%;
+              line-height: 1.6
+            }
             .logo {
               max-width: 300px; 
               padding: 16px;
             }
+            pre {
+              background: #49768c;
+              color: white;
+              padding: 1em;
+            }
+            pre {
+              overflow: auto;
+              word-wrap: normal;
+              white-space: pre;
+            }
+            
+        @media (max-width: 600px) {
+            .post-content img, pre {
+              max-width: 100%;
+            }
+          }
             form {
               width: 100%;
             }

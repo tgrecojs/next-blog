@@ -6,17 +6,17 @@ import {
   watchInitializeDB
 } from '../components/hoc/withEnv.saga';
 
-
 import { submitPost } from './api';
 
+
 function* submitPostSaga(action) {
-  const { payload } = action;
+  console.log('Action', action);
   try {
-    const data = yield call(submitPost, payload);
-    yield put({ 
+    yield call(submitPost(action));
+    yield put({
       type: 'SUBMIT_WORKED'
     });
-  } catch(e) {
+  } catch (e) {
     yield put({
       type: 'SUBMIT_FAILED',
       payload: e
@@ -24,14 +24,16 @@ function* submitPostSaga(action) {
   }
 }
 
-function* postWatcher (action) {
+function* postWatcher(action) {
   yield takeEvery('FORM_SUBMITTED', submitPostSaga);
 }
 
 
 export default function* rootSaga() {
-  yield call(watchInitializeDB);
-  yield call(postWatcher);
+  yield all([
+    call(watchInitializeDB),
+    call(postWatcher)
+  ]);
 };
 
 // https://github.com/redux-saga/redux-saga/issues/160

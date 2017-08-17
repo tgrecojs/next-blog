@@ -2,25 +2,6 @@ import firebase from 'firebase';
 
 const db = () => firebase.database();
 
-
-const registerOnAuthStateChanged = ({
-  userSignedIn
-}) => {
-  firebase.auth().onAuthStateChanged(authUser => {
-    if (authUser) {
-      const uid = firebase.auth().currentUser.uid;
-      const userRef = db().ref(`/users/${uid}`);
-      // whenever there is an update to the user
-      // will trigger userSignedIn with newest data
-      userRef.on('value', snapshot => {
-        const user = snapshot.val();
-        if (user) userSignedIn(user);
-      });
-    }
-  });
-};
-
-
 const initializeDB = ({
   FIREBASE_API_KEY = '',
   FIREBASE_AUTH_DOMAIN = '',
@@ -48,15 +29,13 @@ const initializeDB = ({
 };
 
 const submitPost = ({name, email, companyName, additionalInfo} = {}) => {
-
-  db.ref('/entries' + email).set({
+  return db.ref('/entries' + email).set({
     email, name, companyName, additionalInfo
   });
 };
 
 
 export default {
-  registerOnAuthStateChanged,
   initializeDB,
   submitPost
 };
