@@ -87,7 +87,9 @@ const withMaterialUI = ComposedComponent => {
               min-height: 100vh;
               flex-direction: column;
             }
-            
+              p, h2, h3, h4 {
+                font-family: 'Lato';
+              }
             .content {
               flex: 1;
             }
