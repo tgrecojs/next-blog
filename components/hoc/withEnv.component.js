@@ -9,8 +9,10 @@ const withEnv = ComposedComponent => {
       initializeDB: PropTypes.func,
       serverRendered: PropTypes.bool,
       initializeAuth: PropTypes.func,
+      initializeBlog: PropTypes.func,
 
       env: PropTypes.shape({
+        BLOGGER_API_KEY: PropTypes.string,
         FIREBASE_API_KEY: PropTypes.string,
         FIREBASE_AUTH_DOMAIN: PropTypes.string,
         FIREBASE_DATABASE_URL: PropTypes.string,
@@ -24,6 +26,7 @@ const withEnv = ComposedComponent => {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const serverRendered = !process.browser;
       const env = serverRendered ? {
+        BLOGGER_API_KEY: process.env.BLOGGER_API_KEY,
         FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
         FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
         FIREBASE_DATABASE_URL: process.env.FIREBASE_DATABASE_URL,
@@ -41,11 +44,13 @@ const withEnv = ComposedComponent => {
 
     componentWillMount() {
       const {
-        initializeDB, 
+        initializeDB,
+        initializeBlog,
         env 
       } = this.props;
 
       initializeDB(env);
+      initializeBlog(env);
     }
 
     render() {

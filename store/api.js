@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-
+import fetch from 'isomorphic-fetch';
 const db = () => firebase.database();
 
 const initializeDB = ({
@@ -34,8 +34,15 @@ const submitPost = ({name, email, companyName, additionalInfo} = {}) => {
   });
 };
 
+const initializeBlog = async ({ BLOGGER_API_KEY = '' }) => {
+  const res = await fetch(`https://www.googleapis.com/blogger/v3/blogs/4789269094064278868/posts?key=${BLOGGER_API_KEY}`);
+  const json = await res.json();
+  console.log(json);
+  return json.items;
+};
 
 export default {
   initializeDB,
-  submitPost
+  submitPost,
+  initializeBlog
 };

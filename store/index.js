@@ -9,8 +9,10 @@ import { reducer as formSlice } from '../components/form/reducer';
 import { reducer as aboutMeReducer } from '../components/about-me/reducer';
 import logger from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
+import blogReducer from '../components/blog/reducer';
 
 const mainReducer = combineReducers({
+  blog: blogReducer,
   form: formReducer,
   aboutMe: aboutMeReducer
 });

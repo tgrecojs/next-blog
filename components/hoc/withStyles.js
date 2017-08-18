@@ -5,7 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import Head from 'next/head';
-import { PRIMARY_COLOR } from '../../constants/theme';
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../constants/theme';
 import AppBar from 'material-ui/AppBar';
 import Router from 'next/router';
 import IconButton from 'material-ui/IconButton';
@@ -59,7 +59,8 @@ const withMaterialUI = ComposedComponent => {
         {
           fontFamily: Lato,
           palette: {
-            primary1Color: PRIMARY_COLOR
+            primary1Color: PRIMARY_COLOR,
+            primary2Color: SECONDARY_COLOR
           },
           appBar: {
             height: 50
@@ -93,6 +94,10 @@ const withMaterialUI = ComposedComponent => {
             .content {
               flex: 1;
             }
+            .tab-content {
+              color: white;
+              font-family: 'Lato';
+            }
             .banner{
               background: #fff;
               font-family: 'Lato';
@@ -100,6 +105,20 @@ const withMaterialUI = ComposedComponent => {
               flex-direction: column; 
               align-items: center;
             }
+            .btn-row {
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              margin-bottom: 1em;
+            }
+            form {
+              width: 100%;
+            }
+          form, .flex-col {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              }
             .flex-col p {
               width: 60%;
               line-height: 1.6
@@ -118,20 +137,18 @@ const withMaterialUI = ComposedComponent => {
               word-wrap: normal;
               white-space: pre;
             }
+            footer {
+              background: rgb(86, 156, 183);
+              height: 60px;
+              font-family: 'Lato';
+              color: #fff;
+            }
             
         @media (max-width: 600px) {
             .post-content img, pre {
               max-width: 100%;
             }
           }
-            form {
-              width: 100%;
-            }
-        form, .flex-col {
-              display: flex;
-    flex-direction: column;
-    align-items: center;
-        }
         `}
           </style>
           <MuiThemeProvider muiTheme={muiTheme}>
@@ -149,7 +166,8 @@ const withMaterialUI = ComposedComponent => {
               />
             </div>
           </MuiThemeProvider>
-          <footer>I am at the bottom</footer>
+          <footer className="flex-col">
+            <h4>This site was built by Thomas Greco with Next.js</h4></footer>
         </div>
       );
     }

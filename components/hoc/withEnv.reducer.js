@@ -1,6 +1,7 @@
-export const INITIALIZE_DB = 'INITIALIZE_DB';
+const INITIALIZE_DB = 'INITIALIZE_DB';
+const INITIALIZE_BLOG = 'INITIALIZE_BLOG';
 
-export const initializeDB = ({
+const initializeDB = ({
   FIREBASE_API_KEY = '',
   FIREBASE_AUTH_DOMAIN = '',
   FIREBASE_DATABASE_URL = '',
@@ -18,3 +19,19 @@ export const initializeDB = ({
     FIREBASE_MESSAGING_SENDER_ID
   }
 });
+
+const initializeBlog = ({
+  BLOGGER_API_KEY = ''
+} = {}) => ({
+  type: INITIALIZE_BLOG,
+  payload: {
+    BLOGGER_API_KEY
+  }
+});
+
+export {
+  INITIALIZE_DB,
+  INITIALIZE_BLOG,
+  initializeDB,
+  initializeBlog
+}

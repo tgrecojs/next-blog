@@ -1,18 +1,25 @@
 import React from 'react';
+import 'isomorphic-fetch';
+import Link from 'next/link';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-export default class extends React.Component {
-  static getInitialProps({ query: { id } }) {
-    return { id };
-  }
+const Page = ({ title, content }) =>  (
+  <Card style={{marginTop: '1em'}}>
+  <CardHeader style={{background: 'rgb(86, 156, 183)'}}
+  title={title}
+  subtitle="Subtitle" />
+    <CardText>
+      <div dangerouslySetInnerHTML={{__html: content}} />
+    </CardText>
+  </Card>
+);
 
-  render() {
-    return <div>
-      <h1>My {this.props.id} blog post</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-    </div>;
-  }
-}
 
+const API_KEY = 'AIzaSyAvTf4FzPZt6hr7DtAXt2dBmQ5rqZXeZm8';
+Page.getInitialProps = async ({ query: { id } }) => {
+  const res = await fetch(`https://www.googleapis.com/blogger/v3/blogs/4789269094064278868/posts/${id}?key=AIzaSyAvTf4FzPZt6hr7DtAXt2dBmQ5rqZXeZm8`);
+  const json = await res.json();
+  return { title: json.title, content: json.content };
+};
+
+export default Page;

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./**/**.js && echo 'lint finished.'",
@@ -28,6 +28,7 @@
     "react-redux": "^5.0.6",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.2",
+    "redux-dsm": "^2.0.0",
     "redux-form": "^7.0.3",
     "redux-saga": "^0.15.6"
   },

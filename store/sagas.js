@@ -5,7 +5,7 @@ import {
 import {
   watchInitializeDB
 } from '../components/hoc/withEnv.saga';
-
+import bloggerSaga from '../components/blog/saga';
 import { submitPost } from './api';
 
 
@@ -29,9 +29,11 @@ function* postWatcher(action) {
 }
 
 
+
 export default function* rootSaga() {
   yield all([
     call(watchInitializeDB),
+    call(bloggerSaga),
     call(postWatcher)
   ]);
 };
