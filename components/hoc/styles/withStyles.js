@@ -5,7 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import Head from 'next/head';
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../constants/theme';
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../constants/theme';
 import AppBar from 'material-ui/AppBar';
 import Router from 'next/router';
 import IconButton from 'material-ui/IconButton';

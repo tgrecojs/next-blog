@@ -2,7 +2,7 @@ import { takeEvery, call } from 'redux-saga/effects';
 import {
   initializeDB
 } from './withEnv.reducer';
-import initialize from '../../store/api';
+import initialize from '../../../../store/api';
 
 const log = (...args) => console.log(...args);
 

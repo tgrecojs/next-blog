@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { selectors, actions } from './reducer';
 const { submit } = actions;
 const { getValue } = selectors;
-
+import withEnv from '../hoc/env/firebase/withEnv.component'
 import TextField from 'material-ui/TextField';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import Checkbox from 'material-ui/Checkbox';
@@ -16,7 +16,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import renderSelectField from '../../shared/form/selectField';
 import { email, minLength60, required } from '../../shared/form/validation';
-
+import { initializeDB } from '../hoc/env/firebase/withEnv.reducer';
 
 
 
@@ -56,15 +56,15 @@ let ContactForm = props => {
         label="Email"
       />
       <Field
-        name="favoriteColor"
+        name="reason"
         component={renderSelectField}
-        label="Favorite Color"
+        label="Purpose of Contact"
       >
         <MenuItem value="JavaScript Development Opportunity" primaryText="JavaScript Development" />
         <MenuItem value="Writing or educational video inquiry" primaryText="Writing or Video Content" />
         <MenuItem value="Other Teaching Inquiry" primaryText="Other Teaching Inquiry" />
       </Field>
-      <Field name="addtionalInfo"
+      <Field name="additionalInfo"
         component={renderField}
         validate={[required, minLength60]}
         label="Additional info regarding why you're reching out"
@@ -77,27 +77,12 @@ let ContactForm = props => {
   );
 };
 
-export default connect(undefined, {
-  onSubmit
-})(reduxForm({
+const wrappedForm = reduxForm({
   // a unique name for the form
   form: 'contact'
-})(ContactForm));
+})(ContactForm);
 
 
-export const addPost = ({newTweet, submit, handleChange, submitPostStyles = 'submit-post', textInput = 'Add a tweet'}) =>
-  (
-    <div className={submitPostStyles}>
-
-      <input ref={newTweet} onChange={handleChange} type="text"/>
-      <button onClick={(newTweet) => console.log(newTweet)}>Submit</button>
-    </div>
-  );
-
-
-const mapState = state => ({
-  newTweet: getValue(state),
-  text: state.text
-});
-
-// export default connect(mapState, { submit, handleChange })(addPost);
+export default connect(undefined, {
+  initializeDB,
+  onSubmit})(withEnv(wrappedForm));

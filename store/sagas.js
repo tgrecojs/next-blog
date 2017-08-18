@@ -4,18 +4,18 @@ import {
 } from 'redux-saga/effects';
 import {
   watchInitializeDB
-} from '../components/hoc/withEnv.saga';
+} from '../components/hoc/env/firebase/withEnv.saga';
 import bloggerSaga from '../components/blog/saga';
-import { submitPost } from './api';
+import api from './api';
 
+import Router from 'next/router'
 
 function* submitPostSaga(action) {
   console.log('Action', action);
+  const { payload } = action;
   try {
-    yield call(submitPost(action));
-    yield put({
-      type: 'SUBMIT_WORKED'
-    });
+    yield call(api.submitPost, payload);
+    yield put({ type: 'SUBMIT_WORKED'});
   } catch (e) {
     yield put({
       type: 'SUBMIT_FAILED',

@@ -28,9 +28,14 @@ const initializeDB = ({
   }
 };
 
-const submitPost = ({name, email, companyName, additionalInfo} = {}) => {
-  return db.ref('/entries' + email).set({
-    email, name, companyName, additionalInfo
+
+const submitPost = ({name = 'Anonomyous', email = 'Anonomyous@hotmail.com', 
+reason = 'BECAUSE',
+companyName = 'Anonomyous Co.', 
+additionalInfo = '',
+date = new Date().getTime() } = {}) => {
+  db().ref(`/entries/${date}`).set({
+    name, email, reason, companyName, additionalInfo
   });
 };
 

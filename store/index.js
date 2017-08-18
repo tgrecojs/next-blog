@@ -11,9 +11,19 @@ import logger from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import blogReducer from '../components/blog/reducer';
 
+
 const mainReducer = combineReducers({
+  form: formReducer.plugin({
+    contact: (state, action) => { // <------ 'account' is name of form given to reduxForm()
+      switch (action.type) {
+        case '@@redux-form/SET_SUBMIT_SUCCEEDED':
+          return undefined;       // <--- blow away form data
+        default:
+          return state;
+      }
+    }
+  }),
   blog: blogReducer,
-  form: formReducer,
   aboutMe: aboutMeReducer
 });
 

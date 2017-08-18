@@ -8,6 +8,7 @@ import IconButton from 'material-ui/IconButton';
 
 
 const styles = {
+  baseText: { fontFamily: 'Lato', fontSize: 16 },
   headline: {
     fontSize: 24,
     paddingTop: 16,
@@ -27,28 +28,35 @@ const TabsExampleSimple = () => (
       <Tab label="About Me" >
         <div className="flex-col tab-content">
           <h2 style={styles.headline}>From Graphic Design To Functional Programming</h2>
-          <p>My name is Thomas Greco and I’m a JavaScript developer currently focused on building scalable JavaScript applications using functional programming concepts. Among the technologies I love using are ES6, React, Next.js, Material-UI (I discuss this more in technologies built with this app). Over the last two years, I’ve had the chance to work with people all over the globe for various reasons. This allowed me to gain experience doing everything from creating web layouts with bootstrap to teaching courses viewed by tens of thousands of people.</p>
-          <IconButton iconClassName="muidocs-icon-custom-github" />        </div>
+          <p style={styles.fontFamily}>
+          My name is Thomas Greco and I’m a self-taught developer with a passion for prototypes and functional programming. Prior to finding an interest in programming, I worked as a graphic designer and this has a tremendous influence in the way I studying the web. Among the technologies I am currently utilizing are React, Next.js, Styled Components, and more. Want to hear more? Get in touch with me!</p>
+     </div>
       </Tab>
       <Tab label="Teaching" >
         <div className="flex-col tab-content">
           <h2 style={styles.headline}>Teaching Experience</h2>
           <p>
-        I’ve also published I received the opportunity to publish tutorials and informative articles viewed hundreds of thousands of people across the globe. As a self-taught developer, this was a daunting task, however I strived to succeed and ultimately established a reputation for my ability to write. This resulted in me gaining the skill to teacher others on a massive scale. Additionally, this allowed me to build relationships with people located everywhere from Australia to Portugal and win awesome achievements, like SitePoint.com’s Ambassador of the month!
-
+          Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.          
+          Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.                    
           </p>
+          <div className="btn-row">
+          <RaisedButton label="GitHub" />
+          <RaisedButton secondary={true} label="Twitter" />
+          <RaisedButton primary={true} label="Blog" icon={<FontIcon className="muidocs-icon-custom-github" />} />
         </div>
+          </div>
       </Tab>
       <Tab
         label="Lover of JavaScript"
         data-route="/javascript"
       >
         <div className="flex-col tab-content">
-          <h2 style={styles.headline}>Tab Three</h2>
+          <h2 style={styles.headline}>Object Compostion over Class-based Inheritence</h2>
           <p>
-          This is a third example tab.
+          Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  
+          Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.            
           </p>
-        </div>
+          </div>
       </Tab>
     </Tabs>
     <div className="btn-row">
