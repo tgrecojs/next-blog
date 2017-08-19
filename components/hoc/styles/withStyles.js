@@ -5,7 +5,14 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import Head from 'next/head';
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../constants/theme';
+import { 
+  PRIMARY_COLOR,
+  PRIMARY_COLOR_TWO,
+  PRIMARY_COLOR_THREE,
+  ACCENT_COLOR_ONE,
+  ACCENT_COLOR_TWO,
+  ACCENT_COLOR__THREE
+} from '../../../constants/theme';
 import AppBar from 'material-ui/AppBar';
 import Router from 'next/router';
 import IconButton from 'material-ui/IconButton';
@@ -60,7 +67,11 @@ const withMaterialUI = ComposedComponent => {
           fontFamily: Lato,
           palette: {
             primary1Color: PRIMARY_COLOR,
-            primary2Color: SECONDARY_COLOR
+            primary2Color: PRIMARY_COLOR_TWO,
+            primary3Color: PRIMARY_COLOR_THREE,
+            accent1Color: ACCENT_COLOR_ONE,
+            accent2Color: ACCENT_COLOR_TWO,
+            accent3Color: ACCENT_COLOR__THREE
           },
           appBar: {
             height: 50
@@ -82,6 +93,9 @@ const withMaterialUI = ComposedComponent => {
             {`
             html {
               background: #49768c;
+            }
+            body {
+              margin: 0;
             }
             .site {
               display: flex;
@@ -113,6 +127,7 @@ const withMaterialUI = ComposedComponent => {
             }
             form {
               width: 100%;
+              margin-bottom: 1em;
             }
           form, .flex-col {
               display: flex;

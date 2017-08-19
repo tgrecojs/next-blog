@@ -38,6 +38,11 @@ let ContactForm = props => {
   const { handleSubmit, onSubmit, pristine } = props;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+    <style>{`
+      label { 
+        color: #fff;
+      }
+    `}</style>
       <Field
         name="name"
         component={renderField}
