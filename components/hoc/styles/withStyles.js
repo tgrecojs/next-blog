@@ -198,9 +198,9 @@ const withMaterialUI = ComposedComponent => {
           <MuiThemeProvider muiTheme={muiTheme}>
             <div className="site">
             <nav>
-              <h4><Link prefetch href="/">Home</Link></h4>
-              <h4><Link prefetch href="/blog">Blog</Link></h4>
-              <h4><Link prefetch href="/contact">Contact</Link></h4>
+              <h4><Link prefetch href="/"><a>Home</a></Link></h4>
+              <h4><Link prefetch href="/blog"><a>Blog</a></Link></h4>
+              <h4><Link prefetch href="/contact"><a>Contact</a></Link></h4>
             </nav>
               <div className="banner">
                 <img className="logo" src="../../static/tg-logo.png" />

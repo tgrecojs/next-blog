@@ -13,7 +13,7 @@ const Page = ({ posts, selectPost }) => posts === undefined ? <h2>Loading</h2> :
   <div style={{fontFamily: 'Lato', textAlign: 'center', padding: '1em'}}>
     {posts.map(x => (<div>
       <h2>{x.title}</h2>
-      <RaisedButton onClick={() => selectPost(x)} primary={true}><Link href={`/blog/${x.id}`}>Read</Link></RaisedButton>
+      <RaisedButton onClick={() => selectPost(x)} primary={true}><Link href={`/blog/${x.id}`}><a>Read</a></Link></RaisedButton>
     </div>)
     )}
   </div>
