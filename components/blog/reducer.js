@@ -1,6 +1,8 @@
 export const INITIALIZE_BLOG = 'INITIALIZE_BLOG';
 export const INITIALIZE_BLOG_SUCCESS = 'INITIALIZE_BLOG_SUCCESS';
 export const POST_SELECTED = 'POST_SELECTED';
+export const SELECTED_POST_SUCCESS = 'SELECTED_POST_SUCCESS';
+
 export const initializeBlog = ({
   BLOGGER_API_KEY = ''
 } = {}) => ({
@@ -20,14 +22,14 @@ const parsePost = (payload) => payload.map(x => {
 
 export const selectPost = ({ title, id, content} = {}) => ({
   type: POST_SELECTED,
-  payload: { title, id, content }
+  payload: id
 });
 
 const reducer = (state = {}, action = {}) => {
   const { payload, type } = action;
   switch (type) {
-    case INITIALIZE_BLOG_SUCCESS: return { ...state, currentPost: {},  posts: parsePost(payload)};
-    case POST_SELECTED: return { ...state, currentPost: state.posts.filter(x => x.id === payload) };
+    case INITIALIZE_BLOG_SUCCESS: return { ...state, selectedPost: {},  posts: parsePost(payload)};
+    case POST_SELECTED: return { ...state, selectedPost: payload  };
     default: return state;
   }
 };

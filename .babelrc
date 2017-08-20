@@ -4,10 +4,15 @@
     "react",
     "next/babel"
   ],
+  "env": {
+    "development": {
+      "plugins": ["inline-dotenv"]
+  },
   "plugins": [
     "styled-jsx/babel",
     "transform-object-rest-spread",
     "transform-class-properties",
     "transform-runtime"
-  ]
+    ]
+  }
 }

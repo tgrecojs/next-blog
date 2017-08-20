@@ -10,10 +10,10 @@ import PropTypes from 'prop-types';
 // const Page = ({ posts }) => posts === undefined ? <h2>Loading</h2> : <h2>It works!</h2>;
 
 const Page = ({ posts, selectPost }) => posts === undefined ? <h2>Loading</h2> : (
-  <div style={{fontFamily: 'Lato', textAlign: 'center'}}>
+  <div style={{fontFamily: 'Lato', textAlign: 'center', padding: '1em'}}>
     {posts.map(x => (<div>
       <h2>{x.title}</h2>
-      <button onClick={() => selectPost(x)}></button>
+      <RaisedButton onClick={() => selectPost(x)} primary={true}><Link href={`/blog/${x.id}`}>Read</Link></RaisedButton>
     </div>)
     )}
   </div>

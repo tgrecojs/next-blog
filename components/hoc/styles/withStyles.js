@@ -110,6 +110,9 @@ const withMaterialUI = ComposedComponent => {
             .content {
               flex: 1;
             }
+            button a {
+              text-decoration: none;
+            }
             .tab-content {
               color: white;
               font-family: 'Lato';

@@ -1,4 +1,4 @@
-import { takeEvery, call } from 'redux-saga/effects';
+import { takeEvery, call, put } from 'redux-saga/effects';
 import {
   initializeDB
 } from './withEnv.reducer';
@@ -11,8 +11,10 @@ export function* handleInitializeDB(action) {
   try {
     const { payload } = action;
     yield call(initialize.initializeDB, payload);
+    yield put({ type: 'FIREBASE_WORKD'});
   } catch (e) {
     yield call(log, `Error while initializing db: ${e}`);
+    yield alert('Error! Please reload the page!');    
   }
 }
 
