@@ -9,10 +9,11 @@ import withGoogle from '../hoc/env/google/googleEnv.component';
 import PropTypes from 'prop-types';
 // const Page = ({ posts }) => posts === undefined ? <h2>Loading</h2> : <h2>It works!</h2>;
 
-const Page = ({ posts }) => posts === undefined ? <h2>Loading</h2> : (
+const Page = ({ posts, selectPost }) => posts === undefined ? <h2>Loading</h2> : (
   <div style={{fontFamily: 'Lato', textAlign: 'center'}}>
     {posts.map(x => (<div>
-      <h2>{x.title}</h2><p>{x.text}</p>
+      <h2>{x.title}</h2>
+      <button onClick={() => selectPost(x)}></button>
     </div>)
     )}
   </div>

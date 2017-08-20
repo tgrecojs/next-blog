@@ -1,10 +1,9 @@
-const webpack = require('webpack');
-
-require('dotenv').config();
+const { parsed: localEnv } = require('dotenv').config()
+const webpack = require('webpack')
 module.exports = {
-  webpack: config => {
+  webpack: (config) => {
     config.plugins.push(
-      new webpack.DefinePlugin({
+      new webpack.EnvironmentPlugin({
         'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
         'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
         'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),
