@@ -14,7 +14,8 @@ import {
   ACCENT_COLOR__THREE
 } from '../../../constants/theme';
 import AppBar from 'material-ui/AppBar';
-import Router from 'next/router';
+import Link from 'next/link';
+
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -28,10 +29,11 @@ const Logged = (props) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
-    <MenuItem primaryText="Medium Page" onItemTouchTap={() => Router} />
-    <MenuItem primaryText="Contact Me" />
+    <MenuItem primaryText="Blog" onClick={() => Router.push('/blog')} />
+    <MenuItem primaryText="Contact Me" onClick={() => Router.push('/contact')} />
   </IconMenu>
 );
+
 
 
 try {
@@ -129,7 +131,7 @@ const withMaterialUI = ComposedComponent => {
               width: 100%;
               margin-bottom: 1em;
             }
-          form, .flex-col {
+            form, .flex-col {
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -147,6 +149,13 @@ const withMaterialUI = ComposedComponent => {
               color: white;
               padding: 1em;
             }
+            nav {
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              max-width: 100%;
+              max-height: 100%;
+            }
             pre {
               overflow: auto;
               word-wrap: normal;
@@ -158,20 +167,38 @@ const withMaterialUI = ComposedComponent => {
               font-family: 'Lato';
               color: #fff;
             }
-            
-        @media (max-width: 600px) {
-            .post-content img, pre {
-              max-width: 100%;
+
+            @media (max-width: 600px) {
+             .flex-col p {
+                width: 90%;
+              }
+              .post-content img, pre {
+                max-width: 100%;
+              }
+              nav {
+                flex-direction: column;
+              }
             }
-          }
+            input {
+
+    word-wrap: break-word;
+    word-break: break-all;
+            }
+
+            h4 a {
+              font-family: 'Lato';
+              color: white;
+              text-decoration: none;
+            }
         `}
           </style>
           <MuiThemeProvider muiTheme={muiTheme}>
             <div className="site">
-              <AppBar
-                title="Thomas Greco"
-                iconElementRight={<Logged/>}
-              />
+            <nav>
+              <h4><Link prefetch href="/">Home</Link></h4>
+              <h4><Link prefetch href="/blog">Blog</Link></h4>
+              <h4><Link prefetch href="/contact">Contact</Link></h4>
+            </nav>
               <div className="banner">
                 <img className="logo" src="../../static/tg-logo.png" />
                 <h2 style={{fontFamily: 'Lato'}}>Application Development and Design</h2>

@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./**/**.js && echo 'lint finished.'",
     "test": "babel-node index.test.js",
-    "watch": "watch 'clear && npm run -s test | faucet && npm run -s lint' components"
+    "watch": "watch 'clear && npm run -s test | faucet && npm run -s lint' components",
+    "deploy:dev": "next build && now --public"
   },
   "keywords": [],
   "author": "",

@@ -6,22 +6,19 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { initializeBlog, selectPost } from './reducer';
 import withGoogle from '../hoc/env/google/googleEnv.component';
-const Page = ({ posts }) => (<div>Next stars: {posts.map(x => {
-  return (
-    <Card style={{paddingBottom: '0',
-      marginBottom: '1em', textAlign: 'center'
-    }}>
-      <CardHeader style={{alignText: 'center', background: 'rgb(86, 156, 183)'}} title={x.title}/>
-      <RaisedButton onClick={() => selectPost(x)}
-      fullWidth={true} secondary={true}><Link prefetch href={`/blog?id=${x.id}`} as={`/blog/${x.id}`}>Click to Read
-      </Link></RaisedButton>
-    </Card>
-  );
-})
+import PropTypes from 'prop-types';
+// const Page = ({ posts }) => posts === undefined ? <h2>Loading</h2> : <h2>It works!</h2>;
 
-}
-</div>);
+const Page = ({ posts }) => posts === undefined ? <h2>Loading</h2> : (
+  <div style={{fontFamily: 'Lato', textAlign: 'center'}}>
+    {posts.map(x => (<div>
+      <h2>{x.title}</h2><p>{x.text}</p>
+    </div>)
+    )}
+  </div>
+);
 
 const mapState = state => ({ posts: state.blog.posts });
 
 export default connect(mapState, {initializeBlog, selectPost})(withGoogle(Page));
+

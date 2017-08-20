@@ -3,9 +3,10 @@ import {
   initializeBlog, INITIALIZE_BLOG_SUCCESS
 } from './reducer';
 import initialize from '../../store/api';
-
+import Router from 'next/router';
 const log = (...args) => console.log(...args);
 
+const goToBlog = () => Router.push('/blog')
 // subroutines
 export function* handleInitializeBlogger(action) {
   try {
