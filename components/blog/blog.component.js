@@ -22,7 +22,8 @@ const Page = ({ posts, status }) => status === 'fetching-posts-success' ?
       <div key={x.id}>
         <h2>{x.title}</h2>
         <RaisedButton primary={true}>
-        <Link prefetch href={`/blog/${x.id}`}><a>My first blog post</a></Link>
+        <Link prefetch href={`/blog/${x.id}`}>
+        <a>My first blog post</a></Link>
         </RaisedButton>
       </div>)
     )}

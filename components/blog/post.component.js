@@ -15,10 +15,12 @@ class Page extends React.Component {
     const { id, blog } = this.props;
     const post = blog.payload.filter(x => x.id === id);
     return (
-      <div>
-      <h2>{post[0].title}</h2>
+      <Card style={{margin: '1em'}} >
+      <CardHeader style={{fontSize: '22'}} title={post[0].title} />
+      <CardText>
       <div dangerouslySetInnerHTML={{__html: post[0].content }} />
-      </div>
+      </CardText>
+      </Card>
     );
   }
 }
