@@ -23,6 +23,7 @@ const withEnv = ComposedComponent => {
     static async getInitialProps(ctx) {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const serverRendered = !process.browser;
+      console.log('Server rendered from Firebase', serverRendered);
       const env = serverRendered ? {
         FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
         FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
@@ -42,12 +43,16 @@ const withEnv = ComposedComponent => {
     componentWillMount() {
       const {
         initializeDB,
-        env 
+        serverRendered,
+        env
       } = this.props;
 
-      initializeDB(env);
+      if (serverRendered === true) {
+        initializeDB(env);
+      } else {
+        location.reload();
+      }
     }
-
     render() {
       return <ComposedComponent {...this.props} />;
     }

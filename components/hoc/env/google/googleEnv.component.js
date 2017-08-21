@@ -16,6 +16,7 @@ const withEnv = ComposedComponent => {
     static async getInitialProps(ctx) {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const serverRendered = !process.browser;
+      console.log('Server rendered from google', serverRendered)   
       const env = serverRendered ? {
         BLOGGER_API_KEY: process.env.BLOGGER_API_KEY
       } : {};
@@ -29,11 +30,16 @@ const withEnv = ComposedComponent => {
 
     componentWillMount() {
       const {
+        serverRendered,
         initializeBlog,
         env
       } = this.props;
 
-      initializeBlog(env);
+      if (serverRendered === true) {
+        initializeBlog(env);
+      } else {
+        location.reload();
+      }
     }
 
     render() {

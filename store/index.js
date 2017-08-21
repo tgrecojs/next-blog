@@ -23,7 +23,7 @@ const mainReducer = combineReducers({
       }
     }
   }),
-  blog: blogReducer,
+  blog: blogReducer.reducer,
   aboutMe: aboutMeReducer
 });
 
@@ -33,7 +33,7 @@ import rootSaga from './sagas';
 export const initStore = (initialState) => {
   const sagaMiddleware = createSagaMiddleWare();
   return {
-    ...createStore(mainReducer, initialState, applyMiddleware(sagaMiddleware, logger)),
+    ...createStore(mainReducer, initialState, applyMiddleware(sagaMiddleware)),
     runSaga: sagaMiddleware.run(rootSaga)
   };
 };

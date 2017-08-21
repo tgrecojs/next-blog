@@ -44,14 +44,12 @@ const API_URL = 'https://www.googleapis.com/blogger/v3/blogs/4789269094064278868
 const initializeBlog = async ({ BLOGGER_API_KEY = '' }) => {
   const res = await fetch(`${API_URL}${BLOGGER_API_KEY}`);
   const json = await res.json();
-  console.log(json);
   return json.items;
 };
 
 const selectPost = async ({ POST_ID = ''}) => {
   const res = await fetch(`${API_URL}${POST_ID}`);
   const json = await res.json();
-  console.log(json);
   return {json};
 };
 

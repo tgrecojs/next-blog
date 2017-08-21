@@ -5,7 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import Head from 'next/head';
-import { 
+import {
   PRIMARY_COLOR,
   PRIMARY_COLOR_TWO,
   PRIMARY_COLOR_THREE,
@@ -103,6 +103,7 @@ const withMaterialUI = ComposedComponent => {
               display: flex;
               min-height: 100vh;
               flex-direction: column;
+              font-family: 'Lato';
             }
               p, h2, h3, h4 {
                 font-family: 'Lato';
@@ -141,7 +142,7 @@ const withMaterialUI = ComposedComponent => {
               }
             .flex-col p {
               width: 60%;
-              line-height: 1.6
+              line-height: 1.6;
             }
             .logo {
               max-width: 300px; 
@@ -183,13 +184,11 @@ const withMaterialUI = ComposedComponent => {
               }
             }
             input {
-
     word-wrap: break-word;
     word-break: break-all;
             }
 
             h4 a {
-              font-family: 'Lato';
               color: white;
               text-decoration: none;
             }
@@ -197,11 +196,11 @@ const withMaterialUI = ComposedComponent => {
           </style>
           <MuiThemeProvider muiTheme={muiTheme}>
             <div className="site">
-            <nav>
-              <h4><Link prefetch href="/"><a>Home</a></Link></h4>
-              <h4><Link prefetch href="/blog"><a>Blog</a></Link></h4>
-              <h4><Link prefetch href="/contact"><a>Contact</a></Link></h4>
-            </nav>
+              <nav>
+                <h4><Link prefetch href="/"><a style={{fontFamily: 'Lato'}}>Home</a></Link></h4>
+                <h4><Link prefetch href="/blog"><a style={{fontFamily: 'Lato'}}>Blog</a></Link></h4>
+                <h4><Link prefetch href="/contact"><a style={{fontFamily: 'Lato'}}>Contact</a></Link></h4>
+              </nav>
               <div className="banner">
                 <img className="logo" src="../../static/tg-logo.png" />
                 <h2 style={{fontFamily: 'Lato'}}>Application Development and Design</h2>

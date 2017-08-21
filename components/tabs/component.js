@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
-
+import Router from 'next/router';
+const navigate = (route) => Router.push(`/${route}`);
 
 const styles = {
   baseText: { fontFamily: 'Lato', fontSize: 16 },
@@ -27,22 +28,22 @@ const TabsExampleSimple = () => (
     <Tabs>
       <Tab label="About Me" >
         <div className="flex-col tab-content">
-          <h2 style={styles.headline}>From Graphic Design To Functional Programming</h2>
-          <p style={styles.fontFamily}>
+          <h2 style={{fontFamily: 'Lato'}}>From Graphic Design To Functional Programming</h2>
+          <p style={{fontFamily: 'Lato'}}>
           First somethings many something developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.          
           Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.                    
           </p>  
           <div className="btn-row">
-          <RaisedButton label="GitHub" />
+          <RaisedButton label="Contact" onClick={() => Router.push('/contact')}/>
           <RaisedButton secondary={true} label="Twitter" />
-          <RaisedButton primary={true} label="Blog" icon={<FontIcon className="muidocs-icon-custom-github" />} />
+          <RaisedButton primary={true} label="Blog" onClick={() => Router.push('/blog')} />
           </div>
         </div>
       </Tab>
       <Tab label="Teaching" >
         <div className="flex-col tab-content">
-          <h2 style={styles.headline}>Teaching Experience</h2>
-          <p>
+          <h2 style={{fontFamily: 'Lato'}}>Teaching Experience</h2>
+          <p style={{fontFamily: 'Lato'}}>
           Something many something developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.          
           Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.                    
           </p>
@@ -58,8 +59,8 @@ const TabsExampleSimple = () => (
         data-route="/javascript"
       >
         <div className="flex-col tab-content">
-          <h2 style={styles.headline}>Object Compostion over Class-based Inheritence</h2>
-          <p>
+          <h2 style={{fontFamily: 'Lato'}}>Object Compostion over Class-based Inheritence</h2>
+          <p style={{fontFamily: 'Lato'}}>
           Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  
           Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.  Unlike many JavaScript developers, I was not always aware of the problems that come with using class-based architecture. As a self-taught developer, it took me quite some time to begin understanding JavaScript’s base prototypes makes possible.            
           </p>

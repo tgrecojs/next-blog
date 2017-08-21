@@ -7,28 +7,21 @@ import { initializeBlog, INITIALIZE_BLOG, BLOGGER_API_KEY} from './reducer';
 import withGoogle from '../hoc/env/google/googleEnv.component';
 
 class Page extends React.Component {
-  static getInitialProps({ query: { id }, store, url }) {
-    console.log(store.getState());
-    store.dispatch(initializeBlog())
+  static getInitialProps({ query: { id } }) {
     return { id };
   }
 
-  getPosts (props) {
-    const currentPostId = this.props.url.query.slug;
-    console.log(currentPostId);
-  }
-  componentWillMount() {
-   const id = this.getPosts();
-   const current = this.props.blog.posts.filter(x => x.id === this.id);
-   console.log(current);
-  }
   render() {
-
+    const { id, blog } = this.props;
+    const post = blog.payload.filter(x => x.id === id);
     return (
-      <h1>Hi</h1>
+      <div>
+      <h2>{post[0].title}</h2>
+      <div dangerouslySetInnerHTML={{__html: post[0].content }} />
+      </div>
     );
   }
 }
+// const mapState = state => ({ selectedPost: state.blog.selectedPost});
+export default connect()(Page);
 
-const mapState = state => ({ selectedPost: state.blog.selectedPost});
-export default connect(mapState, { initializeBlog})(withGoogle(Page));
