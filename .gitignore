@@ -1,4 +1,7 @@
 .next
+.eslintrc
+.DS_STORE
+.firebaserc
 node_modules
 .env
 .vscode
