@@ -5,20 +5,20 @@ const {
 } = selectors;
 
 const {
-  submit, 
+  submit,
   multiply
 } = actions;
 
 const createState = (props = {}) => Object.assign({}, initial, props);
 
 test('submit()', assert => {
-  const msg = 'should have an action type and a payload.'
+  const msg = 'should have an action type and a payload.';
   const payload = {
     id: '12344',
     text: 'some text'
   };
   const actual = submit(payload);
-  const expected = {type: submit().type, 
+  const expected = {type: submit().type,
     payload};
 
   assert.same(actual, expected, msg);
@@ -30,10 +30,10 @@ test('multiply', assert => {
   const payload = 3;
   const actual = multiply(payload);
   const expected = 3; // 3 * 1
-  
+
   assert.same(actual, expected, msg);
   assert.end();
-})
+});
 test('AddPost State', nest => {
   nest.test('with default args', assert => {
     const msg = 'should return the default state.';

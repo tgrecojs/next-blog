@@ -11,7 +11,8 @@ import {
   PRIMARY_COLOR_THREE,
   ACCENT_COLOR_ONE,
   ACCENT_COLOR_TWO,
-  ACCENT_COLOR__THREE
+  ACCENT_COLOR__THREE,
+  navBar
 } from '../../../constants/theme';
 import AppBar from 'material-ui/AppBar';
 import Link from 'next/link';
@@ -20,21 +21,6 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-
-const Logged = (props) => (
-  <IconMenu
-    iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-  >
-    <MenuItem primaryText="Blog" onClick={() => Router.push('/blog')} />
-    <MenuItem primaryText="Contact Me" onClick={() => Router.push('/contact')} />
-  </IconMenu>
-);
-
-
 
 try {
   injectTapEventPlugin();
@@ -91,7 +77,7 @@ const withMaterialUI = ComposedComponent => {
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
           </Head>
-          <style>
+          <style global jsx>
             {`
             html {
               background: #49768c;
@@ -125,13 +111,7 @@ const withMaterialUI = ComposedComponent => {
               flex-direction: column; 
               align-items: center;
             }
-            .btn-row {
-              display: flex;
-              justify-content: space-around;
-              align-items: center;
-              margin-bottom: 1em;
-            }
-            form {
+              form {
               width: 100%;
               margin-bottom: 1em;
             }
@@ -153,7 +133,7 @@ const withMaterialUI = ComposedComponent => {
               color: white;
               padding: 1em;
             }
-            nav {
+           nav {
               display: flex;
               justify-content: space-around;
               align-items: center;
@@ -196,7 +176,7 @@ const withMaterialUI = ComposedComponent => {
           </style>
           <MuiThemeProvider muiTheme={muiTheme}>
             <div className="site">
-              <nav>
+              <nav className={navBar}>
                 <h4><Link prefetch href="/"><a style={{fontFamily: 'Lato'}}>Home</a></Link></h4>
                 <h4><Link prefetch href="/blog"><a style={{fontFamily: 'Lato'}}>Blog</a></Link></h4>
                 <h4><Link prefetch href="/contact"><a style={{fontFamily: 'Lato'}}>Contact</a></Link></h4>

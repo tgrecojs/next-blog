@@ -1,49 +1,19 @@
-import autodux from 'autodux';
-// import cuid from 'cuid';
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 
-const getPosts = state => state.posts;
 
-const id = x => x;
-
-const defaultState = {
-  num: 1,
-  queue: [
-    { id: '1111334556', text: 'I am a tweet!'},
-    { id: '7771334556', text: 'I am a second tweet!'},
-    { id: '2211334556', text: 'I am a third tweet!'}
-  ],
-  newTweet: {}
+const reducer = (state = false, action = {}) => {
+  const { payload, type } = action;
+  switch (type) {
+    case SHOW_MODAL: return true; 
+    case CLOSE_MODAL: return false;
+    default: return state;
+  }
 };
 
 
+export const showModalAction = () => ({ type: SHOW_MODAL });
 
-const getTweets = state => state.queue;
+export const hideModalAction = () => ({ type: CLOSE_MODAL });
 
-const tweetsSlice = autodux({
-  slice: 'tweets',
-  initial: defaultState,
-  actions: {
-    multiply: {
-      reducer: (state, payload) => state.num * payload
-    },
-    submit: {
-      reducer: (state, payload) =>  `state: ${state} payload: ${payload}`
-    }
-  },
-  selectors: {
-    getValue: id,
-    getTweets
-  }
-});
-
-const {
-  selectors,
-  initial,
-  actions,
-  slice,
-  reducer
-} = tweetsSlice;
-
-export { selectors, initial, actions, slice, reducer };
-
-export default tweetsSlice;
+export default reducer;

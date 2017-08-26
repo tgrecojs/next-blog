@@ -12,7 +12,8 @@
     "styled-jsx/babel",
     "transform-object-rest-spread",
     "transform-class-properties",
-    "transform-runtime"
+    "transform-runtime",
+    "emotion/babel"
     ]
   }
 }

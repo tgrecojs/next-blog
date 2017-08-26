@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 
-const withEnv = ComposedComponent => {
+const HOC = ComposedComponent => {
   return class HOC extends Component {
     static propTypes = {
       serverRendered: PropTypes.bool,
@@ -16,7 +16,7 @@ const withEnv = ComposedComponent => {
     static async getInitialProps(ctx) {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const serverRendered = !process.browser;
-      console.log('Server rendered from google', serverRendered)   
+      console.log('Server rendered from google', serverRendered);
       const env = serverRendered ? {
         BLOGGER_API_KEY: process.env.BLOGGER_API_KEY
       } : {};
@@ -31,11 +31,11 @@ const withEnv = ComposedComponent => {
     componentWillMount() {
       const {
         serverRendered,
-        initializeBlog,
+        initializeBlogPost,
         env
       } = this.props;
 
-      return serverRendered === true ? initializeBlog(env) : location.reload();
+      return serverRendered === true ? initializeBlogPost(env) : location.reload();
     }
 
     render() {
@@ -44,4 +44,4 @@ const withEnv = ComposedComponent => {
   };
 };
 
-export default withEnv;
+export default HOC;
