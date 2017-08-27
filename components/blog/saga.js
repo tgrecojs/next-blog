@@ -4,9 +4,7 @@ import initializeDb from '../../store/api';
 import Router from 'next/router';
 const log = (...args) => console.log(...args);
 const { initialize, reportSuccess, reportError } = dsm.actionCreators;
-const goToBlog = () => Router.push('/blog');
-import watchSelectPost from './post/saga';
-// subroutines
+const goToBlog = () => Router.push('/blog');// subroutines
 export function* handleInitializeBlogger(action) {
   try {
     const { payload } = action;
@@ -25,8 +23,7 @@ export function* watchInitializeBlogger() {
 
 
 export function* withEnvSaga() {
-   yield all([ call(watchInitializeBlogger), call(watchSelectPost) ]);
-  // yield call(watchInitializeBlogger);
+  yield call(watchInitializeBlogger);
 }
 
 export default withEnvSaga;

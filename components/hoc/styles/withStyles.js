@@ -176,11 +176,6 @@ const withMaterialUI = ComposedComponent => {
           </style>
           <MuiThemeProvider muiTheme={muiTheme}>
             <div className="site">
-              <nav className={navBar}>
-                <h4><Link prefetch href="/"><a style={{fontFamily: 'Lato'}}>Home</a></Link></h4>
-                <h4><Link prefetch href="/blog"><a style={{fontFamily: 'Lato'}}>Blog</a></Link></h4>
-                <h4><Link prefetch href="/contact"><a style={{fontFamily: 'Lato'}}>Contact</a></Link></h4>
-              </nav>
               <div className="banner">
                 <img className="logo" src="../../static/tg-logo.png" />
                 <h2 style={{fontFamily: 'Lato'}}>Application Development and Design</h2>
