@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
+// import { initializeBlog } from '../../hoc/env/google/googleEnv.reducer';
 import authDsm, { initializeBlog } from './reducer';
 import withGoogle from '../../hoc/env/google/googleEnv.component';
 import PropTypes from 'prop-types';
