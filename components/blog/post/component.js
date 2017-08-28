@@ -11,9 +11,19 @@ import PropTypes from 'prop-types';
 import { btnRow } from '../../../constants/theme';
 
 const {
-  string, array
+  string, number, array
 } = PropTypes;
 
+const getPostById = state => state.blog.payload.filter(x => x.id === state.url.query);
+
+/** 
+ * export const Post = ({title = 'Blog post', content = 'I am some content', blogDiv = 'blogPost'}) => (
+  <div className={blogDiv}>
+    <h2>{title}</h2>
+    <div>{content}</div>
+  </div>
+);
+*/
 
 class Page extends React.Component {
   static getInitialProps(ctx) {
@@ -22,16 +32,13 @@ class Page extends React.Component {
   }
 
   render() {
-    const { posts, id } = this.props;
-    const post = posts.filter(x => x.id === id);
-    const { title, content } = post[0];
-    // console.log(this.props);
+   console.log(this.props);
     return (
       <Card style={{margin: '1em'}} >
         <style>{'img { max-width: 600px }'}</style>
-        <CardHeader style={{fontSize: '22px'}} title={title} />
+        <CardHeader style={{fontSize: '22px'}} title='{title}' />
         <CardText>
-          <div dangerouslySetInnerHTML={{__html: content}} />
+        g
         </CardText>
         <div style={btnRow}>
           <RaisedButton primary={true}>
@@ -53,6 +60,8 @@ Page.propTypes = {
   blogDiv: string
 };
 
+// Creates a new reference to payload in my props
+// state.payload === props.post === props.payload
 const mapState = state => ({ posts: state.payload});
 
 

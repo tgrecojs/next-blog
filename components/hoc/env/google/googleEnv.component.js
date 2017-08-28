@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
-
-const checkState = props => serverRendered => serverRendered === true && props.payload.length === undefined
+import { connect } from 'react-redux';
+const checkState = props => serverRendered => serverRendered === true && props.payload.length === undefined;
 
 const withEnv = ComposedComponent => {
   return class HOC extends Component {
@@ -16,7 +16,6 @@ const withEnv = ComposedComponent => {
     }
 
     static async getInitialProps(ctx) {
-      const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const serverRendered = !process.browser;
       console.log('Server rendered from google', serverRendered);
       const env = serverRendered ? {
@@ -25,25 +24,25 @@ const withEnv = ComposedComponent => {
 
       return {
         env,
-        serverRendered,
-        ...subProps
+        serverRendered
       };
-    }
-    componentWillReceiveProps(nextProps) {
-      console.log('nextPorps', this.nextProps);
     }
 
     componentWillMount() {
       const {
-        serverRendered,
         initializeBlog,
+        serverRendered,
         env
       } = this.props;
-
-      if (checkState(this.props)(serverRendered)) {
-        return initializeBlog(env);
+      if (serverRendered === true) {
+        initializeBlog(env);
       }
-    
+
+    }
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.payload > this.props.payload) {
+        return nextProps.payload;
+      }
     }
 
     render() {

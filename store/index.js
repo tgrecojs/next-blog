@@ -15,7 +15,7 @@ import rootSaga from '../components/blog/saga';
 export const initStore = (initialState) => {
   const sagaMiddleware = createSagaMiddleWare();
   return {
-    ...createStore(mainReducer, initialState, applyMiddleware(sagaMiddleware, logger)),
+    ...createStore(mainReducer, initialState, applyMiddleware(sagaMiddleware)),
     runSaga: sagaMiddleware.run(rootSaga)
   };
 };

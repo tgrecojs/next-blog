@@ -5,7 +5,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 // import { initializeBlog } from '../../hoc/env/google/googleEnv.reducer';
-import authDsm, { initializeBlog } from './reducer';
+import authDsm, { initializeBlog, selectPostAction } from './reducer';
 import withGoogle from '../../hoc/env/google/googleEnv.component';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
@@ -14,31 +14,26 @@ const {
   string,
   object
 } = PropTypes;
-const selectPostAction = ({ content }) => ({
-  type: 'SELECT_POST',
-  payload: content
-});
 
 
-const href = id => `/blog/${id}`;
-const as = href();
-
-const Page = ({ posts, status, selectPostAction }) => status === 'fetching-posts-success' ?
-  (<div>
-    {posts.map(x => (
-      <div  style={postCard} key={x.id}>
-        <h2>{x.title}</h2>
-        <div style={{display: 'none'}}>{x.content}</div>
-        <RaisedButton primary={true} >
-        <Link prefetch href={`/${x.id}`}><a>Read Post</a></Link>
-        </RaisedButton>
-      </div>)
-    )}
+const PostCard = ({title, content, id}) => (
+  <div style={postCard} key={id}>
+    <h2>{title}</h2>
+    <div style={{display: 'none'}}>{content}</div>
+    <RaisedButton primary={true} >
+      <Link prefetch href={`/${id}`}><a>Read Post</a></Link>
+    </RaisedButton>
   </div>
-  ) :
+);
+
+const Page = ({ posts, selectPostAction }) => posts.length > 2 ?
+  <div>
+    {posts.map(post => (<PostCard key={post.id} {...post} />))}
+  </div>
+  :
   <h2 style={loadingText}>One moment please....</h2>;
 
-const mapState = state => ({ posts: state.payload, status: state.status });
+const mapState = state => ({ posts: state.payload });
 
 
 export default connect(mapState, {  initializeBlog, selectPostAction })(Page);

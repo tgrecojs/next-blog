@@ -33,7 +33,10 @@ const { actionCreators:
       fetchPosts,
       cancel}
 } = authDSM;
-
+export const selectPostAction = ({ content }) => ({
+  type: 'SELECT_POST',
+  payload: content
+});
 export default authDSM;
 export {  reportSuccess,
   initializeBlog,
