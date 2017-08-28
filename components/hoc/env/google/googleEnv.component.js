@@ -39,7 +39,6 @@ const withEnv = ComposedComponent => {
         initializeBlog,
         env
       } = this.props;
-      console.log(this.props);
 
       if (checkState(this.props)(serverRendered)) {
         return initializeBlog(env);
