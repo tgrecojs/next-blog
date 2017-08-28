@@ -26,13 +26,11 @@ const getPostById = state => state.blog.payload.filter(x => x.id === state.url.q
 */
 
 class Page extends React.Component {
-  static getInitialProps(ctx) {
-    const id = ctx.query.id;
+  static getInitialProps({ query: { id }}) {
     return { id };
   }
 
   render() {
-   console.log(this.props);
     return (
       <Card style={{margin: '1em'}} >
         <style>{'img { max-width: 600px }'}</style>
