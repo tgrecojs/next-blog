@@ -25,6 +25,7 @@ const getPostById = state => state.blog.payload.filter(x => x.id === state.url.q
 );
 */
 
+// Component being rendered in /:id
 class Page extends React.Component {
   static getInitialProps({ query: { id }}) {
     return { id };
@@ -34,9 +35,9 @@ class Page extends React.Component {
     return (
       <Card style={{margin: '1em'}} >
         <style>{'img { max-width: 600px }'}</style>
-        <CardHeader style={{fontSize: '22px'}} title='{title}' />
+        <CardHeader style={{fontSize: '22px'}} title='Removed post.title' />
         <CardText>
-        g
+        Removed post implemenation to ensure this renders w/ 404 as sole error
         </CardText>
         <div style={btnRow}>
           <RaisedButton primary={true}>

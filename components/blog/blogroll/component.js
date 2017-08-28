@@ -36,5 +36,5 @@ const Page = ({ posts, selectPostAction }) => posts.length > 2 ?
 const mapState = state => ({ posts: state.payload });
 
 
-export default connect(mapState, {  initializeBlog, selectPostAction })(Page);
+export default connect(mapState)(Page);
 

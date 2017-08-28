@@ -34,15 +34,11 @@ const withEnv = ComposedComponent => {
         serverRendered,
         env
       } = this.props;
+      // if serverRender is true then initializeBlog
       if (serverRendered === true) {
         initializeBlog(env);
       }
 
-    }
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.payload > this.props.payload) {
-        return nextProps.payload;
-      }
     }
 
     render() {
