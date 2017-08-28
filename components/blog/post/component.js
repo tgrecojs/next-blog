@@ -31,8 +31,8 @@ class Page extends React.Component {
   }
 
   render() {
-    const { id, blog } = this.props;
-    const post = blog.payload.filter(x => x.id === id);
+    const { id, payload } = this.props;
+    const post = payload.filter(x => x.id === id);
     console.log('Props from page', post[0].title);
     const { title, content } = post[0];
     return (

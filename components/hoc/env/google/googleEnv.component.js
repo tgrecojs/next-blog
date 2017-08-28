@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 
+const checkState = props => serverRendered => serverRendered === true && props.payload.length === undefined
+
 const withEnv = ComposedComponent => {
   return class HOC extends Component {
     static propTypes = {
@@ -16,7 +18,7 @@ const withEnv = ComposedComponent => {
     static async getInitialProps(ctx) {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const serverRendered = !process.browser;
-      console.log('Server rendered from google', serverRendered)   
+      console.log('Server rendered from google', serverRendered);
       const env = serverRendered ? {
         BLOGGER_API_KEY: process.env.BLOGGER_API_KEY
       } : {};
@@ -27,6 +29,9 @@ const withEnv = ComposedComponent => {
         ...subProps
       };
     }
+    componentWillReceiveProps(nextProps) {
+      console.log('nextPorps', this.nextProps);
+    }
 
     componentWillMount() {
       const {
@@ -34,8 +39,12 @@ const withEnv = ComposedComponent => {
         initializeBlog,
         env
       } = this.props;
+      console.log(this.props);
 
-      return serverRendered === true ? initializeBlog(env) : location.reload();
+      if (checkState(this.props)(serverRendered)) {
+        return initializeBlog(env);
+      }
+    
     }
 
     render() {

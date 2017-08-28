@@ -30,7 +30,7 @@ const Page = ({ posts, status, selectPostAction }) => status === 'fetching-posts
         <h2>{x.title}</h2>
         <div style={{display: 'none'}}>{x.content}</div>
         <RaisedButton primary={true} >
-        <Link prefetch href={`/blog/${x.id}`}><a>Read Post</a></Link>
+        <Link prefetch href={`/${x.id}`}><a>Read Post</a></Link>
         </RaisedButton>
       </div>)
     )}
@@ -38,8 +38,8 @@ const Page = ({ posts, status, selectPostAction }) => status === 'fetching-posts
   ) :
   <h2 style={loadingText}>One moment please....</h2>;
 
-const mapState = state => ({ posts: state.blog.payload, status: state.blog.status });
+const mapState = state => ({ posts: state.payload, status: state.status });
 
 
-export default connect(mapState, {  initializeBlog, selectPostAction })(withGoogle(Page));
+export default connect(mapState, {  initializeBlog, selectPostAction })(Page);
 

@@ -7,7 +7,7 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
   // CUSTOM ROUTES GO HERE
-  server.get('/blog/:id', (req, res) => {
+  server.get('/:id', (req, res) => {
     const mergedQuery = Object.assign({}, req.query, req.params);
     return app.render(req, res, '/post', mergedQuery);
   });

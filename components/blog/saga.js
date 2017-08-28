@@ -4,6 +4,7 @@ import initializeDb from '../../store/api';
 import Router from 'next/router';
 const log = (...args) => console.log(...args);
 const { initialize, reportSuccess, reportError } = dsm.actionCreators;
+// import { initializeBlog } from '../hoc/env/google/googleEnv.reducer'
 const goToBlog = () => Router.push('/blog');// subroutines
 export function* handleInitializeBlogger(action) {
   try {

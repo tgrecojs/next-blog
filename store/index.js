@@ -7,13 +7,7 @@ import {
 import createSagaMiddleWare from 'redux-saga';
 import logger from 'redux-logger';
 import blogReducer from '../components/blog/blogroll/reducer';
-import modalReducer from '../components/form/reducer';
-
-
-const mainReducer = combineReducers({
-  blog: blogReducer.reducer,
-  modal: modalReducer
-});
+const mainReducer = blogReducer.reducer;
 
 import rootSaga from '../components/blog/saga';
 
